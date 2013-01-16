@@ -1,0 +1,1 @@
+default['mongodb']['install_type'] = 'package'

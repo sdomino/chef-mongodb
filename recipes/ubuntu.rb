@@ -1,0 +1,14 @@
+case node['mongodb']['install_type']
+when 'package'
+  include_recipe 'apt'
+  cookbook_file '/etc/apt/sources.list.d/10gen.list'
+  package 'mongodb-10gen'
+  service 'mongod' do
+    action [:enable, :start]
+  end
+when 'source'
+  include_recipe 'mongodb::source'
+else
+  Chef::Log.error("install_type must be package or source")
+  exit(1)
+end
