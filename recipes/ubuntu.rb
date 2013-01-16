@@ -3,7 +3,7 @@ when 'package'
   include_recipe 'apt'
   cookbook_file '/etc/apt/sources.list.d/10gen.list'
   package 'mongodb-10gen'
-  service 'mongod' do
+  service 'mongodb' do
     action [:enable, :start]
   end
 when 'source'
