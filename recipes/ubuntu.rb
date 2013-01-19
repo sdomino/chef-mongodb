@@ -2,7 +2,7 @@ case node['mongodb']['install_type']
 when 'package'
   execute 'sudo apt-key adv --keyserver keyserver.ubuntu.com --recv 7F0CEB10'
   cookbook_file '/etc/apt/sources.list.d/10gen.list'
-  include_recipe 'apt'
+  execute 'sudo apt-get update'
   package 'mongodb-10gen'
   service 'mongodb' do
     action [:enable, :start]
