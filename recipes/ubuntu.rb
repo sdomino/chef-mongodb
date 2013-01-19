@@ -3,7 +3,8 @@ when 'package'
   execute 'sudo apt-key adv --keyserver keyserver.ubuntu.com --recv 7F0CEB10'
   cookbook_file '/etc/apt/sources.list.d/10gen.list'
   execute 'sudo apt-get update'
-  package 'mongodb-10gen'
+  execute 'sudo apt-get install mongodb-10gen'
+  # package 'mongodb-10gen'
   service 'mongodb' do
     action [:enable, :start]
   end
