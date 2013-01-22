@@ -1,12 +1,12 @@
 case node['mongodb']['install_type']
 when 'package'
-  execute 'sudo apt-key adv --keyserver keyserver.ubuntu.com --recv 7F0CEB10'
-  cookbook_file '/etc/apt/sources.list.d/10gen.list'
-
   # package 'mongodb-10gen'
 
   # i cant get the above to work, so im just going to do what will work for now
-  execute 'sudo apt-get install mongo-10gen'
+  execute 'sudo apt-key adv --keyserver keyserver.ubuntu.com --recv 7F0CEB10'
+  cookbook_file '/etc/apt/sources.list.d/10gen.list'
+  execute 'sudo apt-get update'
+  execute 'sudo apt-get install mongodb-10gen'
   service 'mongodb' do
     action [:enable, :start]
   end
