@@ -1,5 +1,6 @@
 case node['mongodb']['install_type']
 when 'package'
+  cookbook_file '/etc/apt/sources.list.d/10gen.list'
   include_recipe 'apt'
   package 'mongodb-10gen'
   service 'mongodb' do
